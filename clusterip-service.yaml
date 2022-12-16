@@ -3,12 +3,12 @@ kind: Service
 metadata:
   labels:
     app: mynginx
-  name: mynginx
+  name: clusterip
   namespace: achmea
 spec:
   ports:
-  - name: 8081-80
-    port: 8081
+  - name: 8082-80
+    port: 8082
     protocol: TCP
     targetPort: 80
   selector:
