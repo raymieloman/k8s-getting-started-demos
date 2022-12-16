@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mynginx
+  name: mynginx
+  namespace: achmea
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mynginx
+  template:
+    metadata:
+      labels:
+        app: mynginx
+    spec:
+      containers:
+      - image: nginx:latest
+        name: nginx-achmea-pod
+        ports:
+        - containerPort: 80
