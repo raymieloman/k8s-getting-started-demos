@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pvc-demo
+  name: pvc-demo
+  namespace: rloman-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pvc-demo
+  template:
+    metadata:
+      labels:
+        app: pvc-demo
+    spec:
+      volumes:
+      - name: pv-storage
+        persistentVolumeClaim:
+        claimName: claim-rloman
+      containers:
+      - image: nginxinc/nginx-unprivileged:latest
+        name: nginx-unprivileged
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: "/usr/share/nginx/html/error"
+          name: pv-storage
