@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-demo-grep
+  name: nginx-demo-grep
+  namespace: poedel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-demo-grep
+  template:
+    metadata:
+      labels:
+        app: nginx-demo-grep
+    spec:
+      containers:
+      - image: nginx:latest
+        name: nginx
