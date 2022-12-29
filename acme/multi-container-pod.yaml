@@ -14,8 +14,9 @@ spec:
     volumeMounts:
     - name: shared-data
       mountPath: /usr/share/nginx/html
+  # this container below will end before it is tested for Readiness so this pod will be in a NotReady state although the nginx-container is available.
   - name: ubuntu-container
-    image: ubuntu
+    image: ubuntu:latest
     volumeMounts:
     - name: shared-data
       mountPath: /pod-data
