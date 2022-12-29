@@ -15,3 +15,6 @@ The resources will be created in the order they appear in the file. Therefore, i
 - kubectl exec -it my-nginx-app -- /bin/bash
 - curl http://clusterip:8082  (in the my-nginx-app)
 (you can also use the client-pod.yaml for this)
+
+
+# version 1.0.0
