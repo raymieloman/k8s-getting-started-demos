@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: multi-pod
+  name: multi-container-pod
   namespace: acme
 spec:
   volumes:
@@ -14,8 +14,10 @@ spec:
     volumeMounts:
     - name: shared-data
       mountPath: /usr/share/nginx/html
+  # this container below will end before it is tested for Readiness so this pod will be in a NotReady state although the nginx-container is available.
+  # And be aware that this is a Pod, so it will NOT be rescheduled as that is the case for a Deployment
   - name: ubuntu-container
-    image: ubuntu
+    image: ubuntu:latest
     volumeMounts:
     - name: shared-data
       mountPath: /pod-data
