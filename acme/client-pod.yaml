@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: client
+  name: client
+  namespace: acme
+spec:
+  containers:
+  - image: nginx:latest
+    name: client

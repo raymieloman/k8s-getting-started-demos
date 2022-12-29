@@ -2,21 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: mynginx
-  name: mynginx
-  namespace: achmea
+    app: nginx-demo-grep
+  name: nginx-demo-grep
+  namespace: poedel
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: mynginx
+      app: nginx-demo-grep
   template:
     metadata:
       labels:
-        app: mynginx
+        app: nginx-demo-grep
     spec:
       containers:
       - image: nginx:latest
-        name: nginx-achmea-pod
-        ports:
-        - containerPort: 80
+        name: nginx

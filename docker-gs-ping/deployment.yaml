@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: docker-gs-go
+  name: docker-gs-go
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: docker-gs-go
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: docker-gs-go
+  name: docker-gs-go
+  namespace: docker-gs-go
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docker-gs-go
+  template:
+    metadata:
+      labels:
+        app: docker-gs-go
+    spec:
+      containers:
+      - image: rloman/docker-gs-ping:0.1.0-SNAPSHOT
+        name: docker-gs-ping
+        ports:
+        - containerPort: 8080
